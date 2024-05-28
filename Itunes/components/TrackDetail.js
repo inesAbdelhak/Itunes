@@ -1,13 +1,20 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Button, StyleSheet, Alert } from 'react-native';
 
-const Track = ({ track, onSelect }) => {
+const TrackDetail = ({ route }) => {
+  const { track, onAddToFavorites } = route.params;
+
   return (
-    <TouchableOpacity style={styles.container} onPress={() => onSelect(track)}>
+    <View style={styles.container}>
       <Text style={styles.title}>{track.trackName}</Text>
       <Text style={styles.artist}>{track.artistName}</Text>
+      <Text style={styles.album}>{track.collectionName}</Text>
       <Text style={styles.genre}>{track.primaryGenreName}</Text>
-    </TouchableOpacity>
+      <Image source={{ uri: track.artworkUrl100 }} style={styles.image} />
+      <Button title="Ajouter aux favoris" onPress={() => {
+        onAddToFavorites(track);
+      }} />
+    </View>
   );
 };
 
@@ -32,11 +39,21 @@ const styles = StyleSheet.create({
     color: '#555',
     marginBottom: 5,
   },
+  album: {
+    fontSize: 16,
+    color: '#777',
+    marginBottom: 5,
+  },
   genre: {
     fontSize: 16,
     color: '#999',
     marginBottom: 10,
   },
+  image: {
+    width: 100,
+    height: 100,
+    marginBottom: 10,
+  },
 });
 
-export default Track;
+export default TrackDetail;

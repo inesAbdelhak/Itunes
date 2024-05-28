@@ -7,7 +7,7 @@ const RechercheResultat = ({ results, onSelectTrack }) => {
     <View style={styles.container}>
       <FlatList
         data={results}
-        keyExtractor={(item) => item.trackId.toString()}
+        keyExtractor={(item, index) => item.trackId.toString() + index} // Combine trackId with index to ensure uniqueness
         renderItem={({ item }) => <Track track={item} onSelect={onSelectTrack} />}
         contentContainerStyle={styles.listContent}
       />

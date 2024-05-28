@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 const BarreRecherche = ({ onSearch }) => {
   const [input, setInput] = useState('');
@@ -16,7 +16,9 @@ const BarreRecherche = ({ onSearch }) => {
         onChangeText={setInput}
         placeholder="Search for artists or tracks"
       />
-      <Button title="Search" onPress={handlePress} />
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Search</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -25,6 +27,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginBottom: 20,
+    marginTop: 20, // Added to push the search bar down
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -36,6 +39,16 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     height: 40,
     borderRadius: 5,
+  },
+  button: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 20, // Rounded corners
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
 
