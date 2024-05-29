@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const Track = ({ track, onSelect }) => {
   return (
+    // Lorsqu'on appuie sur le composant, la fonction onSelect est appelée avec le  track comme argument
     <TouchableOpacity style={styles.container} onPress={() => onSelect(track)}>
       <Text style={styles.title}>{track.trackName}</Text>
       <Text style={styles.artist}>{track.artistName}</Text>
@@ -11,6 +12,7 @@ const Track = ({ track, onSelect }) => {
   );
 };
 
+// styles
 const styles = StyleSheet.create({
   container: {
     padding: 20,

@@ -7,8 +7,13 @@ const Favorites = ({ favorites, onRemoveFromFavorites }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Mes favoris</Text>
       <FlatList
+      // Les favoris sont passés en tant que données à FlatList
         data={favorites}
+
+        // Chaque élément de la liste est identifié de manière unique par une combinaison de trackId et d'index
         keyExtractor={(item, index) => item.trackId.toString() + index}
+
+        // Pour chaque élément de la liste, un composant Track est rendu avec un bouton pour le supprimer des favoris
         renderItem={({ item }) => (
           <View style={styles.favoriteItem}>
             <Track track={item} />
@@ -20,6 +25,7 @@ const Favorites = ({ favorites, onRemoveFromFavorites }) => {
   );
 };
 
+// styles 
 const styles = StyleSheet.create({
   container: {
     flex: 1,

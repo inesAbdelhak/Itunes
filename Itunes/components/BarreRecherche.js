@@ -1,10 +1,15 @@
+// Importation des modules nécessaires
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
+
+// composant BarreRecherche
 const BarreRecherche = ({ onSearch }) => {
+  // stockage de la valeur d'entrée
   const [input, setInput] = useState('');
 
   const handlePress = () => {
+    // Appel de la fonction onSearch 
     onSearch(input);
   };
 
@@ -14,7 +19,7 @@ const BarreRecherche = ({ onSearch }) => {
         style={styles.input}
         value={input}
         onChangeText={setInput}
-        placeholder="Search for artists or tracks"
+        placeholder="Effectuez une recherche..."
       />
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Search</Text>
@@ -23,11 +28,12 @@ const BarreRecherche = ({ onSearch }) => {
   );
 };
 
+// styles 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginBottom: 20,
-    marginTop: 20, // Added to push the search bar down
+    marginTop: 20, 
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -44,7 +50,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#007BFF',
     paddingVertical: 10,
     paddingHorizontal: 15,
-    borderRadius: 20, // Rounded corners
+    borderRadius: 20, 
   },
   buttonText: {
     color: '#fff',
